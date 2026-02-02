@@ -1,1 +1,0 @@
-export const SHARED_THEME_COLOR = 'blue';
