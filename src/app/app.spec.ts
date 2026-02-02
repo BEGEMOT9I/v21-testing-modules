@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import type { AlarmType } from "../alarm/alarm.types"; // <- comment out to passs the case
+import type { AlarmType } from "../alarm/alarm.types"; // <- comment out to pass the case
 
 @Component({
   selector: 'test-component',
