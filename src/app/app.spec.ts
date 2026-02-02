@@ -1,23 +1,37 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { Component, NgModule } from '@angular/core';
+import {THEME_COLOR} from '../button/button.component';
+// import {SHARED_THEME_COLOR} from '../constants';
+import {SharedModule} from '../shared.module';
+
+@Component({
+  selector: 'test-component',
+  template: '<test-button [style]="{ color }">TestComponent</test-button>',
+  standalone: false
+})
+class TestComponent {
+  color = THEME_COLOR
+}
+
+@NgModule({
+  declarations: [TestComponent],
+  imports: [SharedModule],
+  exports: [TestComponent],
+})
+class TestModule {}
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      declarations: [TestComponent],
+      imports: [TestModule, SharedModule],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
+  it('should render test component', async () => {
+    const fixture = TestBed.createComponent(TestComponent);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, v21-testing-imports');
+    expect(compiled.querySelector('button')?.textContent).toContain('TestComponent');
   });
 });
