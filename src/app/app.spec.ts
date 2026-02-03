@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import type { AlarmType } from "../alarm/alarm.types"; // <- comment out to pass the case
+// import {AlarmModule} from '../alarm/alarm.module'; // or u can add a direct import of the module
 
 @Component({
   selector: 'test-component',
